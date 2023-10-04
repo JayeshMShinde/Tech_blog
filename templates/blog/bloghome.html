@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %} BlogHome {% endblock title %}
+
+{% block js %}
+<script>
+    // This JavaScript code appears to have a syntax error. I've corrected it below.
+    let previews = document.getElementsByClassName('preview');
+    Array.from(previews).forEach((element) => {
+        element.innerHTML = element.innerText;
+    });
+</script>
+{% endblock js %}
+
+{% block blogactive %} active {% endblock blogactive %}
+
+{% block body %}
+<div class="container my-3">
+    <h2 class="text-center">Latest Articles</h2>
+    <div class="row">
+        {% for post in allPosts %}
+        <div class="col-md-6">
+            <div class="card mb-4 shadow-sm">
+                <img src="/static/img/blog.svg" alt="{{ post.title }}" class="img-fluid">
+                <div class="card-body">
+                    <strong class="d-block mb-2 text-primary">Article by {{ post.author }}</strong>
+                    <h3 class="mb-0"><a class="text-dark" href="/blog/{{ post.slug }}">{{ post.title }}</a></h3>
+                    <p class="card-text mb-2 text-muted">{{ post.datetime }}</p>
+                    <p class="card-text">{{ post.content|safe|truncatechars:150 }}</p>
+                    <a href="/blog/{{ post.slug }}" class="btn btn-primary">Continue reading</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

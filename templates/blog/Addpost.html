@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %} Add Post {% endblock title %}
+{% block addpostactive %} active {% endblock addpostactive %}
+{% block body %}
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-body ">
+            {% if post.sno %}
+            <h5 class="card-title text-center">Edit Blog Post</h5>
+            {% else %}
+            <h5 class="card-title text-center">Create a New Blog Post</h5>
+            {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+
+                <div class="form-group">
+                    <label for="{{ form.title.id_for_label }}" class="font-weight-bold">Title:</label>
+                    {{ form.title }}
+                </div>
+                {% if post.sno %}
+                {% else %}
+                <div class="form-group">
+                    <label for="{{ form.author.id_for_label }}" class="font-weight-bold">Author:</label>
+                    {{ form.author }}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.slug.id_for_label }}" class="font-weight-bold">Slug:</label>
+                    {{ form.slug }}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.timestamp.id_for_label }}" class="font-weight-bold">Date:</label>
+                    {{ form.timestamp }}
+                </div>
+                {% endif %}
+                <div class="form-group">
+                    <label for="{{ form.content.id_for_label }}" class="font-weight-bold">Content:</label>
+                    {{ form.content }}
+                </div>
+                {% if post.sno %}
+                <button type="submit" class="btn btn-warning">Update</button>
+                {% else %}
+                <button type="submit" class="btn btn-warning">Publish</button>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

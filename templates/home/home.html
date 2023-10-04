@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock title %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Background Image -->
+            <div class="home-background">
+                <!-- Header Section -->
+                <header class="text-center py-5">
+                    <h1>Welcome to Our Tech Blog</h1>
+                    <p>Stay updated with the latest tech news and trends.</p>
+                    <button class="btn btn-primary"><a href="/blog">Click here!</a></button>
+                </header>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .home-background {
+        background-size: cover;
+        background-position: center;
+        height: 100vh; /* Adjust as needed */
+    }
+
+    header {
+        color: black;
+    }
+
+    header button a {
+        text-decoration: none;
+        color: black;
+    }
+    
+    header button a:hover {
+        text-decoration: none;
+        color: black;
+    }
+</style>
+{% endblock %}
